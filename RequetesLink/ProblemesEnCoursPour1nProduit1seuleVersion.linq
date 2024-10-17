@@ -1,6 +1,6 @@
 <Query Kind="Statements">
   <Connection>
-    <ID>09718ffc-841f-4a49-81fc-367b0c82c189</ID>
+    <ID>156f5571-9d6c-4b8d-b830-81743d2ab3b3</ID>
     <NamingServiceVersion>2</NamingServiceVersion>
     <Persist>true</Persist>
     <Driver Assembly="(internal)" PublicKeyToken="no-strong-name">LINQPad.Drivers.EFCore.DynamicDriver</Driver>
@@ -35,7 +35,12 @@ void ProblemesEnCoursPour1nProduit1seuleVersion()
                          t.ProblemDescription,
                          t.Status,                        
                          ProductName = t.ProductVersionOperatingSystem.Version.Product.ProductName,
-                         VersionName = t.ProductVersionOperatingSystem.Version.VersionName
+                         VersionName = t.ProductVersionOperatingSystem.Version.VersionName,
+						 Resolutions = t.TicketResolutions.Select(r => new 
+                                   {
+                                       r.ResolutionDescription,
+                                       r.ResolutionDate
+                                   })
                      };
         result.Dump();
     }

@@ -1,6 +1,6 @@
 <Query Kind="Statements">
   <Connection>
-    <ID>09718ffc-841f-4a49-81fc-367b0c82c189</ID>
+    <ID>cd6c24d0-c614-45a8-81f3-76ca654b2188</ID>
     <NamingServiceVersion>2</NamingServiceVersion>
     <Persist>true</Persist>
     <Driver Assembly="(internal)" PublicKeyToken="no-strong-name">LINQPad.Drivers.EFCore.DynamicDriver</Driver>
@@ -36,7 +36,12 @@ void ProblemesToutProduitMotCle()
                          t.Status,
                          t.ProductVersionOperatingSystem.Product.ProductName,
                          t.ProductVersionOperatingSystem.Version.VersionName,
-                         t.CreationDate
+                         t.CreationDate,
+						 Resolutions = t.TicketResolutions.Select(r => new 
+                                   {
+                                       r.ResolutionDescription,
+                                       r.ResolutionDate
+                                   })
                      };
         result.Dump();
     }
